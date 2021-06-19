@@ -8,7 +8,7 @@
 class Canvas {
   public:
     Canvas();
-    Canvas(unsigned int width, unsigned int height,  unsigned int maxNumPaths, unsigned int maxPathLength, unsigned int maxNumStates);
+    Canvas(unsigned int width, unsigned int height,  unsigned int maxNumSubPaths, unsigned int maxPathLength, unsigned int maxNumStates);
     ~Canvas();
 
     void save(); // Pushes the current CanvasState to the stack.
@@ -30,8 +30,6 @@ class Canvas {
     
     void setFillColor(unsigned int fillColor); // Sets the current fil color.
     unsigned int getFillColor(); // returns the current fill color.
-
-    void setBackgroundColor(unsigned int color); // Sets the color of the canvas.
 
     //void strokeRect(int x, int y, unsigned int height, unsigned int width); // Clears all pixels on the bitmap in the given rectangle to transparent black.
     //void fillRect(int x, int y, unsigned int height, unsigned int width); // Paints the given rectangle onto the bitmap, using the current fill style.
@@ -57,25 +55,21 @@ class Canvas {
     void drawPix(int x, int y, unsigned int color);
     void horiz(int x1, int x2, unsigned int y, unsigned int color); // Quickly draws a horizontal line
     
-    unsigned int width; 
-    unsigned int height;
+    unsigned int _width;
+    unsigned int _height;
     
-    unsigned int strokeColor;
-    unsigned int fillColor;
+    unsigned int _strokeColor;
+    unsigned int _fillColor;
 
-    unsigned int maxNumPaths; // Maximum number of total paths allowed.
-    unsigned int maxPathLength; // Maximum total number of xy-coordinates in all subpaths of any given path.
-    unsigned int maxNumStates; // Maximum number of canvas states to be saved to the stack.
+    unsigned int _maxNumSubPaths; // Maximum number of total paths allowed.
+    unsigned int _maxPathLength; // Maximum total number of xy-coordinates in all subpaths of any given path.
+    unsigned int _maxNumStates; // Maximum number of canvas states to be saved to the stack.
     
-    unsigned int numStates; // Current number of states on the stack.
-    unsigned int numPaths; // Number of paths currently in the paths list.
-    
-    CanvasPath currentDefaultPath;
-    CanvasPath* paths;
+    CanvasPath path; // canvasPath is a stack of subPaths. the current default path is the subPath at
     
     //CanvasTransform currentTransform; 
     
-    CanvasState* states;
+    CanvasState canvasState;
    
     unsigned int** canvas; // The bitmap: a 2d array of color values.
 };

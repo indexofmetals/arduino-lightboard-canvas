@@ -2,28 +2,19 @@
 #include "SubPath.h"
 
 CanvasPath::CanvasPath(unsigned int maxNumSubPaths, unsigned int maxPathLength) :
-  _maxNumSubPaths(maxNumSubPaths), _maxPathLength(maxPathLength), _numSubPaths(0), _needsNewSubpath(false) {
-  _stack = new SubPath[maxNumSubPaths] { SubPath(maxPathLength) };
-}
+  _maxNumSubPaths(maxNumSubPaths), 
+  _maxPathLength(maxPathLength),
+  _needsNewSubpath(true), 
+  _subPaths(CircularStack<SubPath>(maxNumSubPaths)) {}
 
-CanvasPath::~CanvasPath() {
-  delete[] _stack;
-}
+CanvasPath::~CanvasPath() {}
 
 unsigned int CanvasPath::getNumSubPaths() {
-  return _numSubPaths;
-}
-
-unsigned int CanvasPath::getMaxPathLength() {
-  return _maxPathLength;
+  return _subPaths.getCurrentSize();
 }
 
 void CanvasPath::moveTo(unsigned int x, unsigned int y) {
-  if (_numSubPaths < _maxNumSubPaths) {
-     SubPath subPath(x, y, _maxPathLength);
-     _stack[_numSubPaths] = subPath;
-     _numSubPaths++;
-  }  
+  _subPaths.push(SubPath (x, y, _maxPathLength));
 }
 
 //// Bresenham line drawing algorithm

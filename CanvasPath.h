@@ -1,6 +1,6 @@
 #ifndef CanvasPath_H
 #define CanvasPath_H
-
+#include "CircularStack.h"
 #include "SubPath.h"
 
 // The CanvasPath is a stack of subPaths
@@ -19,13 +19,12 @@ class CanvasPath {
 //    void bezierCurveTo(unsigned int cpx, unsigned int cpy, unsigned int x, unsigned int y); // Adds the given point to the current subpath, connected to the previous one by a cubic Bézier curve with the given control point.
 
     unsigned int getNumSubPaths();
-    unsigned int getMaxPathLength();
+
   private:
     int _maxNumSubPaths; // maximum number of SubPaths in the Path
     int _maxPathLength; // maximum number of coordinates for a subpath
-    int _numSubPaths; // current number of subpaths
     bool _needsNewSubpath;
-    SubPath* _stack;
+    CircularStack<SubPath> _subPaths;
 };
 
 #endif

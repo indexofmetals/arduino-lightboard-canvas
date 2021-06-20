@@ -1,6 +1,8 @@
 #ifndef CanvasState_H
 #define CanvasState_H
 
+// TODO: this cpp file
+
 typedef struct CanvasSetting {
   uint16_t strokeColor;
   uint16_t fillColor;
@@ -20,7 +22,6 @@ class CanvasState {
     unsigned int getStackSize();
 
   private:
-    CanvasSetting* _stack;
-    unsigned int _stackSize;
+    CircularStack<CanvasSetting> _stack;
 };
 #endif

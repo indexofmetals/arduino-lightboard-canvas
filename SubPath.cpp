@@ -1,45 +1,35 @@
 #include "SubPath.h"
 
-SubPath::SubPath(unsigned int maxPathLength) : _stackSize(0), _maxPathLength(maxPathLength), _isClosed(false) {
-  _stack = new Coord [maxPathLength];
-}
+SubPath::SubPath(unsigned int maxPathLength) : _isClosed(false), _coords(CircularStack<Coord>(maxPathLength)) {}
 
-SubPath::SubPath(unsigned int x, unsigned int y, unsigned int maxPathLength) : _stackSize(1), _maxPathLength(maxPathLength), _isClosed(false) {
-    _stack = new Coord [maxPathLength] {Coord {x, y}};
-}
+SubPath::SubPath(unsigned int x, unsigned int y, unsigned int maxPathLength) :
+  _isClosed(false),
+  _coords(CircularStack<Coord>(maxPathLength)) {}
 
-SubPath::~SubPath() {
-  delete[] _stack;
-}
+  SubPath::~SubPath() {}
 
-void SubPath::push(unsigned int x, unsigned int y) {
-  if (_stackSize < _maxPathLength) {
+  void SubPath::push(unsigned int x, unsigned int y) {
     Coord coord = {x, y};
-    _stack[_stackSize] = coord;
-    _stackSize++;
+    _coords.push(coord);
   }
-}
 
-void SubPath::pop() {
-  if (_stackSize > 0) {
-    _stackSize--;
+  Coord SubPath::pop() {
+    return _coords.pop();
   }
-}
 
-void SubPath::clear() {
-  _stackSize = 0;  
-}
-
-bool SubPath::getIsClosed() {
-  return _isClosed;  
-}
-
-void SubPath::setIsClosed(bool isClosed) {
-  _isClosed = isClosed;
-}
-
-Coord SubPath::peak() {
-  if (_stackSize > 0) {
-    return _stack[_stackSize - 1];  
+  void SubPath::clear() {
+    _isClosed = false;
+    _coords.clear();
   }
-}
+
+  bool SubPath::getIsClosed() {
+    return _isClosed;
+  }
+
+  void SubPath::setIsClosed(bool isClosed) {
+    _isClosed = isClosed;
+  }
+
+  Coord SubPath::peek() {
+    return _coords.peek();
+  }

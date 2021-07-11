@@ -70,6 +70,7 @@ class Canvas {
     //CanvasTransform currentTransform; 
     
     CanvasState canvasState;
+    CanvasSetting defaultState;
    
     unsigned int** canvas; // The bitmap: a 2d array of color values.
 };

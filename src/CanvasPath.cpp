@@ -2,19 +2,17 @@
 #include "SubPath.h"
 #include "CircularStack.h"
 
-const int DEFAULT_LENGTH = 100;
-
 CanvasPath::CanvasPath() {
-  _maxNumSubPaths = DEFAULT_LENGTH;
-  _maxPathLength = DEFAULT_LENGTH;
-  _needsNewSubpath = true;
-  _subPaths = CircularStack<SubPath>(DEFAULT_LENGTH);
+  _maxNumSubPaths = DEFAULT_STACK_SIZE;
+  _maxPathLength = DEFAULT_STACK_SIZE; 
+  _needsNewSubpath = false;
+  _subPaths = CircularStack<SubPath>();
 }
 
 CanvasPath::CanvasPath(unsigned int maxNumSubPaths, unsigned int maxPathLength) :
   _maxNumSubPaths(maxNumSubPaths), 
   _maxPathLength(maxPathLength),
-  _needsNewSubpath(true), 
+  _needsNewSubpath(false), 
   _subPaths(CircularStack<SubPath>(maxNumSubPaths)) {}
 
 CanvasPath::~CanvasPath() {}
@@ -24,6 +22,7 @@ unsigned int CanvasPath::getNumSubPaths() {
 }
 
 void CanvasPath::moveTo(unsigned int x, unsigned int y) {
+  _needsNewSubpath = true;
   _subPaths.push(SubPath (x, y, _maxPathLength));
 }
 

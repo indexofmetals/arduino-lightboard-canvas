@@ -7,6 +7,9 @@ typedef struct Coord {
   unsigned int y = 0;
   Coord() {}
   Coord(unsigned int x, unsigned int y) : x(x), y(y) {}
+  bool operator==(Coord& other) {
+    return this->x == other.x && this->y == other.y;
+  }
 } Coord;
 
 // A SubPath is an stack of coordinates
@@ -21,7 +24,7 @@ class SubPath{
     Coord pop(); // gets a coordinate from the _coords CircularStack
     Coord peek(); // looks at the last coordinate added to the _coords CircularStack
     void clear(); // clears the _coords CircularStack
-    void getStackSize(); // returns the current number of coordinates in the _coords CiruclarStack
+    unsigned int getCurrentSize(); // returns the current number of coordinates in the _coords CiruclarStack
     void setIsClosed(bool isClosed); // sets the _isClosed flag
     bool getIsClosed(); // returns the value of the _isClosed flag
 

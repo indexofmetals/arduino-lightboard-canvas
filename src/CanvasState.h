@@ -1,3 +1,5 @@
+#include <stdint.h>
+#include "CircularStack.h"
 #ifndef CanvasState_H
 #define CanvasState_H
 
@@ -16,8 +18,8 @@ class CanvasState {
     ~CanvasState();
 
     void save();      // push
-    void restore();   // pop
-    void peak();
+    CanvasSetting restore();   // pop
+    CanvasSetting peak();
     void reset();   // Resets to default and clears _stack
     unsigned int getStackSize();
 

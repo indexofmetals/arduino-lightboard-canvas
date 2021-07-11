@@ -1,5 +1,7 @@
 #include "SubPath.h"
+#include "CircularStack.h"
 
+SubPath::SubPath() : _isClosed(false), _coords(CircularStack<Coord>()){}
 SubPath::SubPath(unsigned int maxPathLength) : _isClosed(false), _coords(CircularStack<Coord>(maxPathLength)) {}
 
 SubPath::SubPath(unsigned int x, unsigned int y, unsigned int maxPathLength) :

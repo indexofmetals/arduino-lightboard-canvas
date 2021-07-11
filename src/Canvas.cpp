@@ -1,6 +1,4 @@
-#include <Arduino.h>
-#include <OctoWS2811.h>
-#include "canvas.h"
+#include "Canvas.h"
 #include <stdbool.h>
 #include <stdint.h>
 

@@ -5,11 +5,14 @@
 typedef struct Coord {
   unsigned int x = 0;
   unsigned int y = 0;
+  Coord() {}
+  Coord(unsigned int x, unsigned int y) : x(x), y(y) {}
 } Coord;
 
 // A SubPath is an stack of coordinates
 class SubPath{
   public:
+    SubPath();
     SubPath(unsigned int maxPathLength);
     SubPath(unsigned int x, unsigned int y, unsigned int maxPathLength);
     ~SubPath();

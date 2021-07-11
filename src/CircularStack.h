@@ -1,5 +1,6 @@
 #ifndef CircularStack_H
 #define CircularStack_H
+#define DEFAULT_STACK_SIZE 100
 template <class T>
 
 // IMPORTANT NOTE: while this CircularStack cannot be over-or-underflowed, it is 
@@ -8,6 +9,7 @@ template <class T>
 
 class CircularStack {
   public:
+    CircularStack();
     CircularStack(unsigned int capacity);
     CircularStack(unsigned int capacity, T t);
     ~CircularStack();

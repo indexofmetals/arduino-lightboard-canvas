@@ -1,6 +1,8 @@
 #include "CanvasState.h"
 #include "CircularStack.h"
 
+BEGIN_CANVAS_NAMESPACE
+
 CanvasState::CanvasState() {}
 
 CanvasState::CanvasState(unsigned int stackSize) : _stack(CircularStack<CanvasSetting>(stackSize)) {}
@@ -26,3 +28,5 @@ void CanvasState::reset() {
 unsigned int CanvasState::getCurrentSize() {
   return _stack.getCurrentSize();
 }
+
+END_CANVAS_NAMESPACE

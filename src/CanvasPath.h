@@ -1,7 +1,10 @@
-#ifndef CanvasPath_H
-#define CanvasPath_H
+#pragma once
+
+#include "canvas_Namespace.h"
 #include "CircularStack.h"
 #include "SubPath.h"
+
+BEGIN_CANVAS_NAMESPACE
 
 // The CanvasPath is a stack of subPaths
 
@@ -27,4 +30,4 @@ class CanvasPath {
     CircularStack<SubPath> _subPaths;
 };
 
-#endif
+END_CANVAS_NAMESPACE

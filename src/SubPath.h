@@ -1,6 +1,8 @@
-#ifndef SubPath_H
-#define SubPath_H
+#pragma once
+#include "canvas_Namespace.h"
 #include "CircularStack.h"
+
+BEGIN_CANVAS_NAMESPACE
 
 typedef struct Coord {
   unsigned int x = 0;
@@ -32,4 +34,5 @@ class SubPath{
     bool _isClosed;
     CircularStack<Coord> _coords;
 };
-#endif
+
+END_CANVAS_NAMESPACE

@@ -1,4 +1,9 @@
-#ifndef CanvasTransform_H
-#define CanvasTransform_H
+#pragma once
+
+#include "canvas_Namespace.h"
+
+BEGIN_CANVAS_NAMESPACE
+
 typedef float CanvasTransform[6];
-#endif
+
+END_CANVAS_NAMESPACE

@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+BEGIN_CANVAS_NAMESPACE
+
 //helper
 void SWAP(int x, int y) {
   (x) = (x) ^ (y);
@@ -107,3 +109,5 @@ Canvas::~Canvas() {
 //int Canvas::getFillColor() {
 //  return fillColor;
 //}
+
+END_CANVAS_NAMESPACE

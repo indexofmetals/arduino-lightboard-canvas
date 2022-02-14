@@ -1,6 +1,8 @@
 #include "SubPath.h"
 #include "CircularStack.h"
 
+BEGIN_CANVAS_NAMESPACE
+
 SubPath::SubPath() : _isClosed(false), _coords(CircularStack<Coord>()){}
 SubPath::SubPath(unsigned int maxPathLength) : _isClosed(false), _coords(CircularStack<Coord>(maxPathLength)) {}
 
@@ -41,3 +43,5 @@ Coord SubPath::peek() {
 unsigned int SubPath::getCurrentSize() {
   return _coords.getCurrentSize();
 }
+
+END_CANVAS_NAMESPACE

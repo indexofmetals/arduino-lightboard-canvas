@@ -1,9 +1,11 @@
+#pragma once
+
+#include "canvas_Namespace.h"
 #include "CanvasPath.h"
 #include "CanvasState.h"
 #include "CanvasTransform.h"
 
-#ifndef Canvas_H
-#define Canvas_H
+BEGIN_CANVAS_NAMESPACE
 
 class Canvas {
   public:
@@ -74,4 +76,5 @@ class Canvas {
    
     unsigned int** canvas; // The bitmap: a 2d array of color values.
 };
-#endif
+
+END_CANVAS_NAMESPACE

@@ -2,6 +2,8 @@
 #include "SubPath.h"
 #include "CanvasState.h"
 
+BEGIN_CANVAS_NAMESPACE
+
 template <class T>
 CircularStack<T>::CircularStack() : _top(0), _currentSize(0), _capacity(DEFAULT_STACK_SIZE), arr(new T[DEFAULT_STACK_SIZE]) {} 
 
@@ -18,7 +20,7 @@ CircularStack<T>::~CircularStack() {
 
 template <class T>
 void CircularStack<T>::push(T t) {
-  // keep track of the 'current size' for the purposes of dumping the contents if necessary
+  // if it's full, overwrite the oldest item
   _currentSize = _currentSize == _capacity ? _capacity : _currentSize + 1;
   arr[_top] = t;
   _top = (_top + 1) % _capacity;
@@ -26,9 +28,11 @@ void CircularStack<T>::push(T t) {
 
 template <class T>
 T CircularStack<T>::pop() {
+  // if it's empty, no it isn't
   T el = arr[_top];
   _currentSize = _currentSize == 0 ? 0 : _currentSize - 1;
-  _top = (_top + _capacity - 1 ) % _capacity;
+  _top = _currentSize == 0 ? 0 : (_top + _capacity - 1 ) % _capacity;
+
   return el;
 }
 
@@ -51,3 +55,5 @@ void CircularStack<T>::clear() {
 template class CircularStack<Coord>;
 template class CircularStack<SubPath>;
 template class CircularStack<CanvasSetting>;
+
+END_CANVAS_NAMESPACE

@@ -1,9 +1,12 @@
-#ifndef CircularStack_H
-#define CircularStack_H
+#pragma once
+#include "canvas_Namespace.h"
 #define DEFAULT_STACK_SIZE 100
+
+BEGIN_CANVAS_NAMESPACE
+
 template <class T>
 
-// IMPORTANT NOTE: while this CircularStack cannot be over-or-underflowed, it is 
+// NOTE: while this CircularStack cannot be over-or-underflowed, it is 
 // incumbent upon the user to keep track of the current size when dumping the contents,
 // for example when drawing all of the coordinates of a subpath.
 
@@ -26,4 +29,5 @@ class CircularStack {
     unsigned int _capacity;
     T *arr;
 };
-#endif
+
+END_CANVAS_NAMESPACE

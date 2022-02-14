@@ -1,9 +1,12 @@
+#pragma once
+#ifndef Arduino
 #include <stdint.h>
-#include "CircularStack.h"
-#ifndef CanvasState_H
-#define CanvasState_H
+#endif
 
-// TODO: this cpp file
+#include "canvas_Namespace.h"
+#include "CircularStack.h"
+
+BEGIN_CANVAS_NAMESPACE
 
 typedef struct CanvasSetting {
   uint16_t strokeColor = 0;
@@ -28,4 +31,5 @@ class CanvasState {
   private:
     CircularStack<CanvasSetting> _stack;
 };
-#endif
+
+END_CANVAS_NAMESPACE

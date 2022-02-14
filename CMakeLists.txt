@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
-project(ExampleProject)
+project(arduino-lightboard-canvas CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+add_subdirectory(builder)
 
-include_directories(src)
+setup_builder()
 
 add_subdirectory(src)
-add_subdirectory(tests)
-add_subdirectory(lib/googletest)
+add_subdirectory(test)
+add_subdirectory(external)

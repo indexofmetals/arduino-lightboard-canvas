@@ -5,9 +5,12 @@
 BEGIN_CANVAS_NAMESPACE
 
 typedef struct Coord {
-  unsigned int x = 0;
-  unsigned int y = 0;
-  Coord() {}
+  unsigned int x;
+  unsigned int y;
+  Coord() {
+    x = 0;
+    y = 0;
+  }
   Coord(unsigned int x, unsigned int y) : x(x), y(y) {}
   bool operator==(Coord& other) {
     return this->x == other.x && this->y == other.y;

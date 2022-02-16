@@ -1,4 +1,7 @@
 # arduino-lightboard-canvas
+
+(not in a working state)
+
 HTML Canvas drawing methods for LED matrices with Arduino or similar
 
 The structure and tooling for this project was more or less directly copied from the excellent Arduino MIDI Library from FortySevenEffects. Check it out here

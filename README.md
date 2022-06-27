@@ -4,8 +4,8 @@
 
 HTML Canvas drawing methods for LED matrices with Arduino or similar
 
-The structure and tooling for this project was more or less directly copied from the excellent Arduino MIDI Library from FortySevenEffects. Check it out here
-https://github.com/FortySevenEffects/arduino_midi_library
+Here's an idea of what it'll look like:
+![IMG_2927](https://user-images.githubusercontent.com/17439898/175981681-68da6351-f5af-4de8-a832-d39c4dc30bbe.JPG)
 
 Contributing:
 
